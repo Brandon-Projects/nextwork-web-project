@@ -6,8 +6,9 @@ phases:
       java: corretto8
   pre_build:
     commands:
-      - echo Logging in to AWS CodeArtifact...
+      - echo "Logging in to AWS CodeArtifact..."
       - CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain nextwork --domain-owner 650251697098 --region us-east-2 --query authorizationToken --output text`
+      - echo "Auth token: $CODEARTIFACT_AUTH_TOKEN"
       - export CODEARTIFACT_AUTH_TOKEN
   build:
     commands:
